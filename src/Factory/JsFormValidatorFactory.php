@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Mapping\GetterMetadata;
 use Symfony\Component\Validator\Mapping\PropertyMetadata;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\Validator\Validator\TraceableValidator;
 
 /**
  * This factory uses to parse a form to a tree of JsFormElement's
@@ -28,7 +28,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class JsFormValidatorFactory
 {
     /**
-     * @var ValidatorInterface
+     * @var TraceableValidator
      */
     protected $validator;
 
@@ -63,14 +63,14 @@ class JsFormValidatorFactory
     protected $transDomain;
 
     /**
-     * @param ValidatorInterface    $validator
+     * @param TraceableValidator    $validator
      * @param TranslatorInterface   $translator
      * @param \Symfony\Component\Routing\Generator\UrlGeneratorInterface $router
      * @param array                 $config
      * @param string                $domain
      */
     public function __construct(
-        ValidatorInterface $validator,
+        TraceableValidator $validator,
         TranslatorInterface $translator,
         $router,
         $config,
